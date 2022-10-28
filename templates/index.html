@@ -1,0 +1,39 @@
+{% extends 'basic.html'  %}
+{% block title %} Flash Forex Converter (mini) {% endblock %}
+
+{% block content %}
+<h1> What would you like to convert? </h1>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+   
+    {% for message in messages %}
+      <div> {{ message }} </div>
+    {% endfor %}
+
+  {% endif %}
+{% endwith %}
+
+<form action="/conversion" method="POST" >
+<div class="countainer-fluid">
+  <div class="input-text"> 
+    <label for="convert_from" class="form-label" > Convert From </label>
+    <input type="text" class="form-control" placeholder="Enter 3 letter currency abbreviation" name="currency_from" minlength="3" maxlength="3">
+  </div>
+
+  <div class="input-text">
+    <label for="convert_to" class="form-label"> Convert To </label>
+    <input type="text" class="form-control" placeholder="Enter 3 letter currency abbreviation" name="currency_to" minlength="3" maxlength="3">
+  </div>
+
+  <div class="input-text">
+    <label for="amount" class="form-label"> Amount </label>
+    <input type="number" class="form-control" name="amount">
+    <br>
+    <button class="btn btn-success">Convert</button>
+  </div>
+</div>
+
+</form>
+
+{% endblock %}
